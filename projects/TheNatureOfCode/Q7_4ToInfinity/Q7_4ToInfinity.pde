@@ -79,7 +79,7 @@ class CA {
 
   int rules(int a, int b, int c) {
     String s = "" + a + b + c;
-    int index = Integer.parseInt(s,2);
+    int index = Number.parseInt(s,2);
     return ruleset[index];
   }
 
