@@ -1,7 +1,7 @@
 Target target;
 Population saber;
 Population saber2;
-fluid f;
+//fluid f;
 int lifetime = 300;
 int lifeCounter;
 
@@ -13,7 +13,7 @@ void setup()
   lifetime = 300;
   saber = new Population(50, target,0);
   saber2 = new Population(50, target,1);
-  f = new fluid(width/2,height/2, 50,50,0.1);
+  //f = new fluid(width/2,height/2, 50,50,0.1);
  
 }
 
@@ -23,7 +23,7 @@ void draw()
   target.display();
   saber.display();
   saber2.display();
-  f.display();
+  //f.display();
  if (lifeCounter < lifetime) 
  {
    saber.run();

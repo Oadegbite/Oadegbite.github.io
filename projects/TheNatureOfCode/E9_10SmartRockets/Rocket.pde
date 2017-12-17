@@ -82,6 +82,11 @@ class Rocket {
     popMatrix();
   }
   
+  void drag(fluid f)
+  {
+    
+  }
+  
   void displayB()
   {
     float theta = velocity.heading() + PI/2;
