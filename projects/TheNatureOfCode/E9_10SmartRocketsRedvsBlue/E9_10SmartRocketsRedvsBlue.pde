@@ -43,8 +43,3 @@ void draw()
  }
  
 }
-
-void mousePressed() {
-  target.loc.x = mouseX;
-  target.loc.y = mouseY;
-}

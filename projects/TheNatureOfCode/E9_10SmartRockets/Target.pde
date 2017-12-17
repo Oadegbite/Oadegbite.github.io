@@ -13,6 +13,7 @@ class Target
   {
     fill(0);
     ellipse(loc.x,loc.y,radius,radius);
+    text("Target",loc.x-20,loc.y+50);
   }
   
 }
