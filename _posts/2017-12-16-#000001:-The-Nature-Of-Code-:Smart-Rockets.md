@@ -6,7 +6,7 @@ date: 2017-12-16
 
 <canvas data-processing-sources="/projects/TheNatureOfCode/canvases/00001.pde"></canvas>
 <p> A population of evolving smart rockets made with the help of Chapter 9 of the amazing <a href="http://natureofcode.com/book/chapter-9-the-evolution-of-code/">Nature Of Code Book</a>.</p>
-<p>Code on <a href="https://github.com/Oadegbite/Oadegbite.github.io/tree/master/projects/TheNatureOfCode/E9_10SmartRockets">Github</a>
+<p>Code on <a href="https://github.com/Oadegbite/Oadegbite.github.io/tree/master/projects/TheNatureOfCode/E9_10SmartRockets">Github</a></p>
 
 ## The Idea:
 
