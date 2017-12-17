@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#00001:   The Nature Of Code"
+title: "#00001: The Nature Of Code: Smart Rockets"
 date: 2017-12-16
 ---
 
