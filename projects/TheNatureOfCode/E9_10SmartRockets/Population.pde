@@ -6,15 +6,16 @@ class Population
  PVector origin;
  float popFit;
  int generation;
- 
+ int popC; //for population color 0 = red, 1 = blue
  Target target; 
   
- Population(int popSize, Target tar)
+ Population(int popSize, Target tar, int popC_)
  {
    population = new Rocket[popSize];
    origin = new PVector(width/2,height - 20);
    matingPool = new ArrayList<Rocket>();
    target = tar;
+   popC = popC_;
    generation = 0;
    for (int i = 0; i < population.length; i++)
    {
@@ -27,7 +28,8 @@ class Population
  {
   for (Rocket r : population)
   {
-    r.run();
+    if ( popC == 0)   r.run();
+    else r.runB();
     r.hitCheck(target);
   }
  }
@@ -112,13 +114,30 @@ class Population
  
  void display()
  {
+   if(popC == 0)
+ {
    stroke(0);
+   fill(255,0,0);
    text("Generation #: ", 10, 20);
-   text(generation, 90, 20);
+   text(generation, 100, 20);
    text("Population Fitness #: ", 10, 40);
-   text(popFit, 120, 40);
+   text(popFit, 130, 40);
    text("Cycles Left #: ", 10, 60);
-   text(lifetime - lifeCounter, 90, 60);
+   text(lifetime - lifeCounter, 100, 60);
+ }
+ 
+ else
+ {
+   stroke(0);
+   fill(0,67,255);
+   text("Generation #: ", width - 180, 20);
+   text(generation, width - 95, 20);
+   text("Population Fitness #: ", width - 180, 40);
+   text(popFit, width - 55, 40);
+   text("Cycles Left #: ", width - 180, 60);
+   text(lifetime - lifeCounter, width - 95, 60);
+ }
+ 
  }
  
 }

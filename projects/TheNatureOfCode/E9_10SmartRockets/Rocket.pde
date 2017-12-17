@@ -37,7 +37,13 @@ class Rocket {
   void run(){
    applyForce( dna.genes[lifeCounter] );
    update();
-   display();
+   displayR();
+  }
+  
+   void runB(){
+   applyForce( dna.genes[lifeCounter] );
+   update();
+   displayB();
   }
   
   void hitCheck(Target tar)
@@ -45,10 +51,29 @@ class Rocket {
     
   }
   
-  void display()
+  void displayR()
   {
     float theta = velocity.heading() + PI/2;
     fill(255,0,0);
+    stroke(0);
+    pushMatrix();
+    
+    translate(location.x,location.y);
+    rotate(theta);
+    
+    beginShape(TRIANGLES);
+    vertex(0,-r*2);
+    vertex(-r,r*2);
+    vertex(r,r*2);
+    endShape();
+    
+    popMatrix();
+  }
+  
+  void displayB()
+  {
+    float theta = velocity.heading() + PI/2;
+    fill(0,67,255);
     stroke(0);
     pushMatrix();
     
