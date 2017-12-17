@@ -8,7 +8,7 @@ date: 2017-12-16
 <p> A population of evolving smart rockets made with the help of <a href="http://natureofcode.com/book/chapter-9-the-evolution-of-code/">Chapter 9</a> of the amazing <a href="http://natureofcode.com/book/">Nature Of Code Book</a>.</p>
 <p>Code on <a href="https://github.com/Oadegbite/Oadegbite.github.io/tree/master/projects/TheNatureOfCode/E9_10SmartRockets">Github</a></p>
 
-<h2><u>The Idea:</u><h2>
+<h2><u>The Idea:</u></h2>
 <p>To use a genetic algorith to solve a problem </p>
 
 ## The Implementation:
