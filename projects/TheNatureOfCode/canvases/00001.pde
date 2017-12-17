@@ -10,7 +10,8 @@ void setup()
   lifeCounter = 0;
   target = new Target(new PVector(width/2,50), 20);
   lifetime = 300;
-  saber = new Population(50, target);
+  saber = new Population(50, target,0);
+  saber2 = new Population(50, target,1);
 
 }
 
@@ -19,9 +20,11 @@ void draw()
   background(255);
   target.display();
   saber.display();
+  saber2.display();
  if (lifeCounter < lifetime)
  {
    saber.run();
+   saber2.run();
    lifeCounter++;
  }
  else {
@@ -30,82 +33,11 @@ void draw()
   saber.monteSelect();
   saber.reproduce();
 
+  lifeCounter = 0;
+  saber2.fitness();
+  saber2.monteSelect();
+  saber2.reproduce();
  }
-
-}
-
-class Rocket {
-
-  //[full] A rocket has three vectors: location, velocity, acceleration.
-  PVector location;
-  PVector velocity;
-  PVector acceleration;
-  float fitness;
-  DNA dna;
-  float r = 3;
-  int geneCount = 0;
-
-  //[end]
-
-  Rocket(PVector origin)
-  {
-   dna = new DNA();
-   velocity = new PVector(0,0);
-   acceleration = new PVector(0,0);
-   location = origin.get();
-  }
-
-  //[full] Accumulating forces into acceleration (Newton’s 2nd law)
-  void applyForce(PVector f) {
-    acceleration.add(f);
-  }
-  //[end]
-
-  // Our simple physics model (Euler integration)
-  void update() {
-    // Velocity changes according to acceleration.
-    velocity.add(acceleration);
-    // Location changes according to velocity.
-    location.add(velocity);
-    acceleration.mult(0);
-  }
-
-  void run(){
-   applyForce( dna.genes[lifeCounter] );
-   update();
-   display();
-  }
-
-  void hitCheck(Target tar)
-  {
-
-  }
-
-  void display()
-  {
-    float theta = velocity.heading() + PI/2;
-    fill(255,0,0);
-    stroke(0);
-    pushMatrix();
-
-    translate(location.x,location.y);
-    rotate(theta);
-
-    beginShape(TRIANGLES);
-    vertex(0,-r*2);
-    vertex(-r,r*2);
-    vertex(r,r*2);
-    endShape();
-
-    popMatrix();
-  }
-
-  void fitness(Target tar)
-  {
-    float dist = PVector.dist(location,tar.loc);
-    fitness = pow(1/dist,2);
-    fitness = map(fitness, 0, 1, 0, 1000);
-  }
 
 }
 
@@ -163,15 +95,16 @@ class Population
  PVector origin;
  float popFit;
  int generation;
-
+ int popC; //for population color 0 = red, 1 = blue
  Target target;
 
- Population(int popSize, Target tar)
+ Population(int popSize, Target tar, int popC_)
  {
    population = new Rocket[popSize];
    origin = new PVector(width/2,height - 20);
    matingPool = new ArrayList<Rocket>();
    target = tar;
+   popC = popC_;
    generation = 0;
    for (int i = 0; i < population.length; i++)
    {
@@ -184,7 +117,8 @@ class Population
  {
   for (Rocket r : population)
   {
-    r.run();
+    if ( popC == 0)   r.run();
+    else r.runB();
     r.hitCheck(target);
   }
  }
@@ -269,14 +203,131 @@ class Population
 
  void display()
  {
+   if(popC == 0)
+ {
    stroke(0);
+   fill(255,0,0);
    text("Generation #: ", 10, 20);
-   text(generation, 90, 20);
+   text(generation, 100, 20);
    text("Population Fitness #: ", 10, 40);
-   text(popFit, 120, 40);
+   text(popFit, 130, 40);
    text("Cycles Left #: ", 10, 60);
-   text(lifetime - lifeCounter, 90, 60);
+   text(lifetime - lifeCounter, 100, 60);
  }
+
+ else
+ {
+   stroke(0);
+   fill(0,67,255);
+   text("Generation #: ", width - 180, 20);
+   text(generation, width - 95, 20);
+   text("Population Fitness #: ", width - 180, 40);
+   text(popFit, width - 55, 40);
+   text("Cycles Left #: ", width - 180, 60);
+   text(lifetime - lifeCounter, width - 95, 60);
+ }
+
+ }
+
+}
+
+class Rocket {
+
+  //[full] A rocket has three vectors: location, velocity, acceleration.
+  PVector location;
+  PVector velocity;
+  PVector acceleration;
+  float fitness;
+  DNA dna;
+  float r = 3;
+  int geneCount = 0;
+
+  //[end]
+
+  Rocket(PVector origin)
+  {
+   dna = new DNA();
+   velocity = new PVector(0,0);
+   acceleration = new PVector(0,0);
+   location = origin.get();
+  }
+
+  //[full] Accumulating forces into acceleration (Newton’s 2nd law)
+  void applyForce(PVector f) {
+    acceleration.add(f);
+  }
+  //[end]
+
+  // Our simple physics model (Euler integration)
+  void update() {
+    // Velocity changes according to acceleration.
+    velocity.add(acceleration);
+    // Location changes according to velocity.
+    location.add(velocity);
+    acceleration.mult(0);
+  }
+
+  void run(){
+   applyForce( dna.genes[lifeCounter] );
+   update();
+   displayR();
+  }
+
+   void runB(){
+   applyForce( dna.genes[lifeCounter] );
+   update();
+   displayB();
+  }
+
+  void hitCheck(Target tar)
+  {
+
+  }
+
+  void displayR()
+  {
+    float theta = velocity.heading() + PI/2;
+    fill(255,0,0);
+    stroke(0);
+    pushMatrix();
+
+    translate(location.x,location.y);
+    rotate(theta);
+
+    beginShape(TRIANGLES);
+    vertex(0,-r*2);
+    vertex(-r,r*2);
+    vertex(r,r*2);
+    endShape();
+
+    popMatrix();
+  }
+
+  void displayB()
+  {
+    float theta = velocity.heading() + PI/2;
+    fill(0,67,255);
+    stroke(0);
+    pushMatrix();
+
+    translate(location.x,location.y);
+    rotate(theta);
+
+    beginShape(TRIANGLES);
+    vertex(0,-r*2);
+    vertex(-r,r*2);
+    vertex(r,r*2);
+    endShape();
+
+    popMatrix();
+  }
+
+  void fitness(Target tar)
+  {
+    float dist = PVector.dist(location,tar.loc);
+    fitness = pow(1/dist,2);
+    fitness = map(fitness, 0, 1, 0, 1000);
+  }
 
 }
 
