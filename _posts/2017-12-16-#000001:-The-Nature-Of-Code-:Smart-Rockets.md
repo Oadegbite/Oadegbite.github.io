@@ -19,5 +19,5 @@ A population of evolving smart rockets made with the help of Chapter 9 of the am
 ### Additional Resources:
 
 <p>This project was made with <a href="https://processing.org/">Processing</a>.</p>
-<p>Embedded into the web with [ProcessingJs](http://processingjs.org/).</p>
-<p>Inspired by the <a href="http://natureofcode.com/book/chapter-9-the-evolution-of-code/">Nature Of Code Book</a> and [The Coding Train Youtube Channel](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw).</p>
+<p>Embedded into the web with <a href="http://processingjs.org/">ProcessingJs</a>.</p>
+<p>Inspired by the <a href="http://natureofcode.com/book/chapter-9-the-evolution-of-code/">Nature Of Code Book</a> and<a href="https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw">The Coding Train Youtube Channel</a>. </p>
