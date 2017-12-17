@@ -9,10 +9,10 @@ void setup()
 {
   size(780,580);
   lifeCounter = 0;
-  target = new Target(new PVector(width/2,50), 20);
+  target = new Target(new PVector(width/2,50), 50);
   lifetime = 300;
-  saber = new Population(50, target,0);
-  saber2 = new Population(50, target,1);
+  saber = new Population(25, target,0);
+  saber2 = new Population(25, target,1);
   //f = new fluid(width/2,height/2, 50,50,0.1);
  
 }

@@ -1,6 +1,6 @@
 class Population
 {
- float mutuationRate = 0.02;
+ float mutuationRate = 0.01;
  Rocket[] population;
  ArrayList<Rocket> matingPool;
  PVector origin;

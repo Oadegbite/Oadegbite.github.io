@@ -7,12 +7,12 @@ int lifeCounter;
 
 void setup()
 {
-  size(780,580);
+  size(780,800);
   lifeCounter = 0;
-  target = new Target(new PVector(width/2,50), 20);
+  target = new Target(new PVector(width/2,50), 50);
   lifetime = 300;
-  saber = new Population(50, target,0);
-  saber2 = new Population(50, target,1);
+  saber = new Population(25, target,0);
+  saber2 = new Population(25, target,1);
   //f = new fluid(width/2,height/2, 50,50,0.1);
 
 }
@@ -92,7 +92,7 @@ class DNA
 
 class Population
 {
- float mutuationRate = 0.02;
+ float mutuationRate = 0.01;
  Rocket[] population;
  ArrayList<Rocket> matingPool;
  PVector origin;
@@ -294,7 +294,7 @@ class Rocket {
   void hitCheck(Target tar)
   {
      float d = dist(location.x, location.y, tar.loc.x, tar.loc.y);
-    if (d < 12) {
+    if (d < tar.radius/2) {
       hit = true;
     }
   }
@@ -316,6 +316,11 @@ class Rocket {
     endShape();
 
     popMatrix();
+  }
+
+  void drag(fluid f)
+  {
+
   }
 
   void displayB()

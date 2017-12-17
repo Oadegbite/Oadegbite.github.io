@@ -58,7 +58,7 @@ class Rocket {
   void hitCheck(Target tar)
   {
      float d = dist(location.x, location.y, tar.loc.x, tar.loc.y);
-    if (d < 12) {
+    if (d < tar.radius) {
       hit = true;
     } 
   }
