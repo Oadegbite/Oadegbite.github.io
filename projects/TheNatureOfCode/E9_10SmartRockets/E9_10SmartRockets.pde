@@ -7,7 +7,7 @@ int lifeCounter;
 
 void setup()
 {
-  size(780,580);
+  size(780,800);
   lifeCounter = 0;
   target = new Target(new PVector(width/2,50), 50);
   lifetime = 300;

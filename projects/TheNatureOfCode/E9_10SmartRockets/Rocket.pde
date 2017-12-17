@@ -58,7 +58,7 @@ class Rocket {
   void hitCheck(Target tar)
   {
      float d = dist(location.x, location.y, tar.loc.x, tar.loc.y);
-    if (d < tar.radius) {
+    if (d < tar.radius/2) {
       hit = true;
     } 
   }
@@ -113,5 +113,6 @@ class Rocket {
     fitness = map(fitness, 0, 1, 0, 1000);
     if(hit) fitness += 1000;
   }
+  
   
 }

@@ -97,13 +97,14 @@ class Population
  ArrayList<Rocket> matingPool;
  PVector origin;
  float popFit;
+ int popSize;
  int generation;
  int popC; //for population color 0 = red, 1 = blue
  Target target;
 
- Population(int popSize, Target tar, int popC_)
+ Population(int popSize_, Target tar, int popC_)
  {
-   population = new Rocket[popSize];
+   population = new Rocket[popSize_];
    origin = new PVector(width/2,height - 20);
    matingPool = new ArrayList<Rocket>();
    target = tar;
@@ -113,7 +114,7 @@ class Population
    {
     population[i] = new Rocket(origin);
    }
-
+   popSize = popSize_;
  }
 
  void run()
@@ -216,6 +217,10 @@ class Population
    text(popFit, 130, 40);
    text("Cycles Left #: ", 10, 60);
    text(lifetime - lifeCounter, 100, 60);
+   text("Population Size #: ", 10, 80);
+   text(popSize, 120, 80);
+   text("Mutuation Rate #: ", 10, 100);
+   text(mutuationRate, 120, 100);
  }
 
  else
@@ -228,6 +233,10 @@ class Population
    text(popFit, width - 55, 40);
    text("Cycles Left #: ", width - 180, 60);
    text(lifetime - lifeCounter, width - 95, 60);
+   text("Population Size #: ", width - 180, 80);
+   text(popSize, width - 65, 80);
+   text("Mutuation Rate #: ", width - 180, 100);
+   text(mutuationRate, width - 70, 100);
  }
 
  }
