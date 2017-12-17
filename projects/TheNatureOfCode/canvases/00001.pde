@@ -1,6 +1,7 @@
 Target target;
 Population saber;
 Population saber2;
+//fluid f;
 int lifetime = 300;
 int lifeCounter;
 
@@ -12,6 +13,7 @@ void setup()
   lifetime = 300;
   saber = new Population(50, target,0);
   saber2 = new Population(50, target,1);
+  //f = new fluid(width/2,height/2, 50,50,0.1);
 
 }
 
@@ -21,6 +23,7 @@ void draw()
   target.display();
   saber.display();
   saber2.display();
+  //f.display();
  if (lifeCounter < lifetime)
  {
    saber.run();
@@ -241,6 +244,7 @@ class Rocket {
   DNA dna;
   float r = 3;
   int geneCount = 0;
+  boolean hit;
 
   //[end]
 
@@ -250,6 +254,7 @@ class Rocket {
    velocity = new PVector(0,0);
    acceleration = new PVector(0,0);
    location = origin.get();
+   hit = false;
   }
 
   //[full] Accumulating forces into acceleration (Newton’s 2nd law)
@@ -268,20 +273,30 @@ class Rocket {
   }
 
   void run(){
-   applyForce( dna.genes[lifeCounter] );
-   update();
+   if (!hit)
+   {
+     applyForce( dna.genes[lifeCounter] );
+     update();
+   }
+
    displayR();
   }
 
    void runB(){
-   applyForce( dna.genes[lifeCounter] );
-   update();
+   if (!hit)
+   {
+     applyForce( dna.genes[lifeCounter] );
+     update();
+   }
    displayB();
   }
 
   void hitCheck(Target tar)
   {
-
+     float d = dist(location.x, location.y, tar.loc.x, tar.loc.y);
+    if (d < 12) {
+      hit = true;
+    }
   }
 
   void displayR()
@@ -327,6 +342,7 @@ class Rocket {
     float dist = PVector.dist(location,tar.loc);
     fitness = pow(1/dist,2);
     fitness = map(fitness, 0, 1, 0, 1000);
+    if(hit) fitness += 1000;
   }
 
 }
