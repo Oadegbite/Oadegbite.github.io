@@ -10,7 +10,7 @@ date: 2017-12-16
 
 <h2><u>The Idea:</u></h2>
 <p>To use a genetic algorith to solve a problem.</p>
-<p>Done though two populations of ships that can navigate to a target place at multiple locations.</p>
+<p>Done though two populations of ships that can navigate to a target placed at multiple locations.</p>
 
 <p><u>The variables:</u></p>
 <p><em><strong>Generation:</strong></em> Number of generations since start of scene.</p>
