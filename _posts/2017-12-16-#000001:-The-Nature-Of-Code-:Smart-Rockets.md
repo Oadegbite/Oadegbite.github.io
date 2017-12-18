@@ -12,8 +12,14 @@ date: 2017-12-16
 <p>To use a genetic algorith to solve a problem.</p>
 <p>Done though two populations of ships that can navigate to a target place at multiple locations.</p>
 
+<p><u>The variables:</u></p>
+<p>Generation: Number of generations since start of scene.</p>
+<p>Population Fitness: The average fitness of the population, fitness being the method of selection based on how close the ship gets to the target.</p>
+<p>Life: The amount of time till death and start of new generation. </p>
+<p>Population Size: Number of ships in the population.</p>
+<p>Mutation Rate: The rate at which new directions are added to ships DNA to test for other methods of raising fitness.</p>
 <h2><u>The Implementation:</u></h2>
-<p>T</p>
+<p></p>
 
 <h2><u>The Conclusion:</u></h2>
 
