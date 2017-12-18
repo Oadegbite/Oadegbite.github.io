@@ -14,10 +14,10 @@ date: 2017-12-16
 
 <p><u>The variables:</u></p>
 <p><em><strong>Generation:</strong></em> Number of generations since start of scene.</p>
-<p>Population Fitness: The average fitness of the population, fitness being the method of selection based on how close the ship gets to the target.</p>
-<p>Life: The amount of time till death and start of new generation. </p>
-<p>Population Size: Number of ships in the population.</p>
-<p>Mutation Rate: The rate at which new directions are added to ships DNA to test for other methods of raising fitness.</p>
+<p><em><strong>Population Fitness:</strong></em> The average fitness of the population, fitness being the method of selection based on how close the ship gets to the target.</p>
+<p><em><strong>Life:</strong></em> The amount of time till death and start of new generation. </p>
+<p><em><strong>Population Size:</strong></em> Number of ships in the population.</p>
+<p><em><strong>Mutation Rate:</strong></em> The rate at which new directions are added to ships DNA to test for other methods of raising fitness.</p>
 <h2><u>The Implementation:</u></h2>
 <p></p>
 
