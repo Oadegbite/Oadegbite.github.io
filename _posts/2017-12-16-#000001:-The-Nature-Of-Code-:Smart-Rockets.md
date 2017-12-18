@@ -13,6 +13,7 @@ date: 2017-12-16
 <p>Done though two populations of ships that can navigate to a target place at multiple locations.</p>
 
 <h2><u>The Implementation:</u></h2>
+<p>T</p>
 
 <h2><u>The Conclusion:</u></h2>
 
