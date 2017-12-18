@@ -220,7 +220,7 @@ class Population
    text(generation, 100, 20);
    text("Population Fitness #: ", 10, 40);
    text(popFit, 130, 40);
-   text("Life             #: ", 10, 60);
+   text("Life                #: ", 10, 60);
    text(lifetime - lifeCounter, 100, 60);
    text("Population Size #: ", 10, 80);
    text(popSize, 120, 80);
