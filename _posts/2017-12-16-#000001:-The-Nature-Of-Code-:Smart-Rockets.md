@@ -21,7 +21,7 @@ date: 2017-12-16
 <h2><u>The Implementation:</u></h2>
 <p></p>
 
-<h2><u>The Conclusion:</u></h2>
+<h2><u>Next Steps:</u></h2>
 
 <h2><u>Additional Resources:</u></h2>
 
