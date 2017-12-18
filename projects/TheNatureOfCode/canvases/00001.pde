@@ -220,7 +220,7 @@ class Population
    text(generation, 100, 20);
    text("Population Fitness #: ", 10, 40);
    text(popFit, 130, 40);
-   text("HP#: ", 10, 60);
+   text("Life#: ", 10, 60);
    text(lifetime - lifeCounter, 100, 60);
    text("Population Size #: ", 10, 80);
    text(popSize, 120, 80);
@@ -236,7 +236,7 @@ class Population
    text(generation, width - 95, 20);
    text("Population Fitness #: ", width - 180, 40);
    text(popFit, width - 55, 40);
-   text("HP#: ", width - 180, 60);
+   text("Life#: ", width - 180, 60);
    text(lifetime - lifeCounter, width - 95, 60);
    text("Population Size #: ", width - 180, 80);
    text(popSize, width - 65, 80);
