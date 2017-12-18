@@ -13,7 +13,7 @@ class Population
  Population(int popSize_, Target tar, int popC_)
  {
    population = new Rocket[popSize_];
-   origin = new PVector(width/2,height - 20);
+   origin = new PVector(width/2,780);
    matingPool = new ArrayList<Rocket>();
    target = tar;
    popC = popC_;

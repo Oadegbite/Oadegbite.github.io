@@ -9,7 +9,8 @@ date: 2017-12-16
 <p>Code on <a href="https://github.com/Oadegbite/Oadegbite.github.io/tree/master/projects/TheNatureOfCode/E9_10SmartRockets">Github</a></p>
 
 <h2><u>The Idea:</u></h2>
-<p>To use a genetic algorith to solve a problem </p>
+<p>To use a genetic algorith to solve a problem.</p>
+<p>Done though two populations of ships that can navigate to a target place at multiple locations.</p>
 
 <h2><u>The Implementation:</u></h2>
 

@@ -7,7 +7,7 @@ int lifeCounter;
 
 void setup()
 {
-  size(780,800);
+  size(780,900);
   lifeCounter = 0;
   target = new Target(new PVector(width/2,50), 50);
   lifetime = 300;
@@ -42,4 +42,9 @@ void draw()
   saber2.reproduce();
  }
  
+}
+
+void mousePressed() {
+  target.loc.x = mouseX;
+  target.loc.y = mouseY;
 }
