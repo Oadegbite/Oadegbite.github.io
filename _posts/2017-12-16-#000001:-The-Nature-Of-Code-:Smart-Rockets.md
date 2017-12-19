@@ -19,8 +19,8 @@ date: 2017-12-16
 <p><em><strong>Population Size:</strong></em> Number of ships in the population.</p>
 <p><em><strong>Mutation Rate:</strong></em> The rate at which new directions are added to ships DNA to test for other methods of raising fitness by trying to find the target in new locations.
   <ul>
-    <li><p>Increasing mutation rate means ships are more likely to change directions in their DNA passed on from their parents, with too high a mutation the population loses a sense of the target and go in random directions.</p></li>
-    <li><p>Decreasing mutation rate mean ships are less likely to to change directions in their DNA passed on from their parents, with too little mutation the population follows very closely path traced out by parents and if the target mose they cannot adapt.</p></li>
+    <li><p>Increasing mutation rate ships are more likely to change directions in their DNA passed on from their parents, with too high a mutation the population loses a sense of the target and go in random directions.</p></li>
+    <li><p>Decreasing mutation rate ships are less likely to to change directions in their DNA passed on from their parents, with too little mutation the population follows very closely path traced out by parents and if the target mose they cannot adapt.</p></li>
   </ul>
 </p>
 
