@@ -19,10 +19,33 @@ void setup()
 
 void draw()
 {
+  
   background(255);
+  
   target.display();
   saber.display();
   saber2.display();
+  
+  if (keyPressed)
+    {
+      if (key == 'q' || key =='Q'){
+        saber.mutuationRate += -0.01;
+      }
+      if (key == 'W' || key =='w'){
+        saber.mutuationRate += 0.01;
+      }
+      if (key == 'o' || key =='O'){
+        saber2.mutuationRate += -0.01;
+      }
+      if (key == 'P' || key =='p'){
+        saber2.mutuationRate += 0.01;
+      }
+      if (key == 'R' || key =='r'){
+        saber.mutuationRate = 0.01;
+        saber2.mutuationRate = 0.01;
+      }
+    }
+  
   //f.display();
  if (lifeCounter < lifetime) 
  {
@@ -41,7 +64,14 @@ void draw()
   saber2.monteSelect();
   saber2.reproduce();
  }
- 
+  stroke(0);
+   fill(255,0,0);
+   text("Mutation Rate: Q increase/W decrease", 10, 50);
+   stroke(0);
+   fill(0,67,255);
+   text("Mutation Rate: Q increase/W decrease", width - 180, 20);
+   fill(0);
+   text("R to reset mutation rates",(width/2)-75,height -50);
 }
 
 void mousePressed() {
