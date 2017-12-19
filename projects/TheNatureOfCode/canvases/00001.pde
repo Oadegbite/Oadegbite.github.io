@@ -63,10 +63,10 @@ void draw()
 
  stroke(0);
   fill(255,0,0);
-  text("Mutation Rate: Q increase/W decrease", 10, height -50);
+  text("Mutation Rate: W increase/Q decrease", 10, height -50);
   stroke(0);
   fill(0,67,255);
-  text("Mutation Rate: O increase/P decrease", width - 250, height -50);
+  text("Mutation Rate: P increase/O decrease", width - 250, height -50);
   fill(0);
   text("R to reset mutation rates",(width/2)-75,height -50);
 
