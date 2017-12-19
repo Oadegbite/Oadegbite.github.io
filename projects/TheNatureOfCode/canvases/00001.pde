@@ -125,7 +125,7 @@ class DNA
 
 class Population
 {
- float mutuationRate = 0.015;
+ float mutuationRate = 0.010;
  Rocket[] population;
  ArrayList<Rocket> matingPool;
  PVector origin;
