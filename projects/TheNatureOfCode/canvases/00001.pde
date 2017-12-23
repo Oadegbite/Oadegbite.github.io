@@ -258,7 +258,7 @@ class Population
    {
      r.fitness(target);
      total += r.fitness;
-     if (r.fitness > maxFit) maxFit = r.fitness;
+    //if (r.fitness > maxFit) maxFit = r.fitness;
    }
    popFit = total/population.length;
  }
