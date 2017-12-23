@@ -1,7 +1,7 @@
 class DNA
 {
   PVector[] genes = new PVector[lifetime];
-  float maxforce = 0.5;
+  float maxforce = 0.8;
   
   
   DNA()

@@ -3,7 +3,7 @@ Population saber;
 Population saber2;
 fluid[] obs;
 //fluid f;
-int lifetime = 400;
+int lifetime = 350;
 int lifeCounter;
 
 void setup()
@@ -94,16 +94,20 @@ void draw()
       }
     }
   
-  for (fluid f : obs)
-  {
-  f.display();
-  }
+  for(int i = 0; i < obs.length; i++)
+ {
+   obs[i].display();
+}
+
+  
  if (lifeCounter < lifetime) 
  {
-   saber.run(obs);
-   saber2.run(obs);
+   saber.run();
+   saber2.run();
    lifeCounter++;
  }
+ 
+ 
  else {
   lifeCounter = 0;
   saber.fitness();
@@ -117,10 +121,10 @@ void draw()
  }
   stroke(0);
    fill(255,0,0);
-   text("Mutation Rate: Q increase/W decrease", 10, height -50);
+   text("Mutation Rate: W increase/Q decrease", 10, height -50);
    stroke(0);
    fill(0,67,255);
-   text("Mutation Rate: Q increase/W decrease", width - 250, height -50);
+   text("Mutation Rate: P increase/O decrease", width - 250, height -50);
    fill(0);
    text("R to reset mutation rates",(width/2)-75,height -50);
    fill(0);

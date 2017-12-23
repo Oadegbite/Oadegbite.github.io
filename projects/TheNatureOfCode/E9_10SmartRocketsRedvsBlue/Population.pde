@@ -26,14 +26,14 @@ class Population
    popSize = popSize_;
  }
  
- void run(fluid[] fo)
+ void run()
  {
   for (Rocket r : population)
   {
     if ( popC == 0)   r.run();
     else r.runB();
     r.hitCheck(target);
-    r.hitCheck(fo);
+    r.hitCheck();
   }
  }
  
@@ -140,8 +140,8 @@ class Population
    text("Generation #: ", 10, 20);
    text(generation, 100, 20);
    text("Population Fitness #: ", 10, 40);
-   text(popFit, 130, 40);
-   text("Cycles Left #: ", 10, 60);
+   text(popFit, 150, 40);
+   text("Life Left #: ", 10, 60);
    text(lifetime - lifeCounter, 100, 60);
    text("Population Size #: ", 10, 80);
    text(popSize, 120, 80);
@@ -156,8 +156,8 @@ class Population
    text("Generation #: ", width - 180, 20);
    text(generation, width - 95, 20);
    text("Population Fitness #: ", width - 180, 40);
-   text(popFit, width - 55, 40);
-   text("Cycles Left #: ", width - 180, 60);
+   text(popFit, width - 45, 40);
+   text("Life Left #: ", width - 180, 60);
    text(lifetime - lifeCounter, width - 95, 60);
    text("Population Size #: ", width - 180, 80);
    text(popSize, width - 65, 80);

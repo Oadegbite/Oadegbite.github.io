@@ -63,12 +63,12 @@ class Rocket {
     if (d < tar.radius/2) {
       hit = true;
     }
-    return;
+
   }
   
- void hitCheck(fluid[] fo)
+ void hitCheck()
  {
-   for (fluid f : fo)
+   for (fluid f : obs)
    {
      float d = dist(location.x, location.y, f.loc.x, f.loc.y);
     if (d < f.radius/2) {
@@ -76,7 +76,7 @@ class Rocket {
     }
     
    }
-   return;
+
  }
   
    void checkEdges()
@@ -146,8 +146,13 @@ class Rocket {
   {
     float dist = PVector.dist(location,tar.loc);
     fitness = pow(1/dist,2);
-    fitness = map(fitness, 0, 1, 0, 1000);
+    fitness = map(fitness, 0, 1, 0, 5);
     if(hit) fitness += 1000;
+    if ( location.y > height/2 ){
+      fitness -= pow(1/dist,2);
+    }
+    else if(fhit) fitness -= pow(1/dist,2);
+
   }
   /*
   void fitness(Target tar)
