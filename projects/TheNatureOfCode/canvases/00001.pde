@@ -507,7 +507,7 @@ class Rocket {
       fitness -= pow(1/dist,2);
     }
     else if(fhit) fitness -= pow(1/dist,2);
-
+    else return;
   }
   /*
   void fitness(Target tar)
