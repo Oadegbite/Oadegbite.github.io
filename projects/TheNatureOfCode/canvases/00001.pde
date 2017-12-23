@@ -15,7 +15,7 @@ void setup()
   saber = new Population(15, target,0);
   saber2 = new Population(15, target,1);
   //f = new fluid(width/2,height/2, 50,50,0.1);
-  obs = new fluid[8];
+  obs = new fluid[5];
 
  PVector check;
 
