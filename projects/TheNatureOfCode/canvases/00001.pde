@@ -1,48 +1,3 @@
-class DNA
-{
-  PVector[] genes = new PVector[lifetime];
-  float maxforce = 0.8;
-
-
-  DNA()
-  {
-    //genes = new PVector[lifetime];
-    for (int i = 0; i < genes.length; i++) {
-      float angle = random(TWO_PI);
-      genes[i] = new PVector(cos(angle), sin(angle));
-      genes[i].mult(random(0, maxforce));
-    }
-
-  }
-
-  DNA crossOver(DNA partner)
-  {
-    DNA child = new DNA();
-
-    for (int i = 0; i < genes.length; i++)
-      {
-        float r = random(1);
-        if (r > 0.50) child.genes[i] = genes[i];
-        else child.genes[i] = partner.genes[i];
-      }
-
-    return child;
-  }
-
-
-  void mutate(float m)
-  {
-    for (int i = 0; i < genes.length; i++)
-    {
-     if (random(1) < m)
-     {
-        genes[i] = PVector.random2D();
-        genes[i].mult(random(0,maxforce));
-     }
-    }
-  }
-
-}
 Target target;
 Population saber;
 Population saber2;
@@ -181,32 +136,48 @@ void mousePressed() {
   target.loc.y = mouseY;
 }
 
-class fluid
+class DNA
 {
-   PVector loc;
- float radius;
- float c;
+  PVector[] genes = new PVector[lifetime];
+  float maxforce = 0.8;
 
- fluid(PVector w)
- {
-   loc = w;
-   radius = random(100,200);
- }
 
-  void display()
+  DNA()
   {
-    fill(74, 247, 17,30);
-    ellipse(loc.x,loc.y,radius,radius);
-    text("obstacle", loc.x, loc.y);
+    //genes = new PVector[lifetime];
+    for (int i = 0; i < genes.length; i++) {
+      float angle = random(TWO_PI);
+      genes[i] = new PVector(cos(angle), sin(angle));
+      genes[i].mult(random(0, maxforce));
+    }
+
   }
 
-  boolean collsionCheck(Target l2)
+  DNA crossOver(DNA partner)
   {
-    float d = dist(l2.loc.x, l2.loc.y, loc.x, loc.y);
-     if (d < l2.radius) {
-      return true;
+    DNA child = new DNA();
+
+    for (int i = 0; i < genes.length; i++)
+      {
+        float r = random(1);
+        if (r > 0.50) child.genes[i] = genes[i];
+        else child.genes[i] = partner.genes[i];
+      }
+
+    return child;
+  }
+
+
+  void mutate(float m)
+  {
+    for (int i = 0; i < genes.length; i++)
+    {
+     if (random(1) < m)
+     {
+        genes[i] = PVector.random2D();
+        genes[i].mult(random(0,maxforce));
+     }
     }
-    return false;
   }
 
 }
@@ -258,7 +229,7 @@ class Population
    {
      r.fitness(target);
      total += r.fitness;
-    //if (r.fitness > maxFit) maxFit = r.fitness;
+     if (r.fitness > maxFit) maxFit = r.fitness;
    }
    popFit = total/population.length;
  }
@@ -579,6 +550,36 @@ Target(PVector w)
     text("Click/Tap to move",loc.x-50,loc.y-30);
     ellipse(loc.x,loc.y,radius,radius);
     text("Target",loc.x-20,loc.y+50);
+  }
+
+}
+
+class fluid
+{
+   PVector loc;
+ float radius;
+ float c;
+
+ fluid(PVector w)
+ {
+   loc = w;
+   radius = random(100,200);
+ }
+
+  void display()
+  {
+    fill(74, 247, 17,30);
+    ellipse(loc.x,loc.y,radius,radius);
+    text("obstacle", loc.x, loc.y);
+  }
+
+  boolean collsionCheck(Target l2)
+  {
+    float d = dist(l2.loc.x, l2.loc.y, loc.x, loc.y);
+     if (d < l2.radius) {
+      return true;
+    }
+    return false;
   }
 
 }
