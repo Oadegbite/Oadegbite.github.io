@@ -1,9 +1,54 @@
+class DNA
+{
+  PVector[] genes = new PVector[lifetime];
+  float maxforce = 0.8;
+
+
+  DNA()
+  {
+    //genes = new PVector[lifetime];
+    for (int i = 0; i < genes.length; i++) {
+      float angle = random(TWO_PI);
+      genes[i] = new PVector(cos(angle), sin(angle));
+      genes[i].mult(random(0, maxforce));
+    }
+
+  }
+
+  DNA crossOver(DNA partner)
+  {
+    DNA child = new DNA();
+
+    for (int i = 0; i < genes.length; i++)
+      {
+        float r = random(1);
+        if (r > 0.50) child.genes[i] = genes[i];
+        else child.genes[i] = partner.genes[i];
+      }
+
+    return child;
+  }
+
+
+  void mutate(float m)
+  {
+    for (int i = 0; i < genes.length; i++)
+    {
+     if (random(1) < m)
+     {
+        genes[i] = PVector.random2D();
+        genes[i].mult(random(0,maxforce));
+     }
+    }
+  }
+
+}
 Target target;
 Population saber;
 Population saber2;
 fluid[] obs;
 //fluid f;
-int lifetime = 400;
+int lifetime = 350;
 int lifeCounter;
 
 void setup()
@@ -102,8 +147,8 @@ void draw()
 
  if (lifeCounter < lifetime)
  {
-   saber.run(obs);
-   saber2.run(obs);
+   saber.run();
+   saber2.run();
    lifeCounter++;
  }
 
@@ -121,10 +166,10 @@ void draw()
  }
   stroke(0);
    fill(255,0,0);
-   text("Mutation Rate: Q increase/W decrease", 10, height -50);
+   text("Mutation Rate: W increase/Q decrease", 10, height -50);
    stroke(0);
    fill(0,67,255);
-   text("Mutation Rate: Q increase/W decrease", width - 250, height -50);
+   text("Mutation Rate: P increase/O decrease", width - 250, height -50);
    fill(0);
    text("R to reset mutation rates",(width/2)-75,height -50);
    fill(0);
@@ -136,48 +181,32 @@ void mousePressed() {
   target.loc.y = mouseY;
 }
 
-class DNA
+class fluid
 {
-  PVector[] genes = new PVector[lifetime];
-  float maxforce = 0.5;
+   PVector loc;
+ float radius;
+ float c;
 
+ fluid(PVector w)
+ {
+   loc = w;
+   radius = random(100,200);
+ }
 
-  DNA()
+  void display()
   {
-    //genes = new PVector[lifetime];
-    for (int i = 0; i < genes.length; i++) {
-      float angle = random(TWO_PI);
-      genes[i] = new PVector(cos(angle), sin(angle));
-      genes[i].mult(random(0, maxforce));
-    }
-
+    fill(74, 247, 17,30);
+    ellipse(loc.x,loc.y,radius,radius);
+    text("obstacle", loc.x, loc.y);
   }
 
-  DNA crossOver(DNA partner)
+  boolean collsionCheck(Target l2)
   {
-    DNA child = new DNA();
-
-    for (int i = 0; i < genes.length; i++)
-      {
-        float r = random(1);
-        if (r > 0.50) child.genes[i] = genes[i];
-        else child.genes[i] = partner.genes[i];
-      }
-
-    return child;
-  }
-
-
-  void mutate(float m)
-  {
-    for (int i = 0; i < genes.length; i++)
-    {
-     if (random(1) < m)
-     {
-        genes[i] = PVector.random2D();
-        genes[i].mult(random(0,maxforce));
-     }
+    float d = dist(l2.loc.x, l2.loc.y, loc.x, loc.y);
+     if (d < l2.radius) {
+      return true;
     }
+    return false;
   }
 
 }
@@ -210,14 +239,14 @@ class Population
    popSize = popSize_;
  }
 
- void run(fluid[] fo)
+ void run()
  {
   for (Rocket r : population)
   {
     if ( popC == 0)   r.run();
     else r.runB();
     r.hitCheck(target);
-    r.hitCheck(fo);
+    r.hitCheck();
   }
  }
 
@@ -324,8 +353,8 @@ class Population
    text("Generation #: ", 10, 20);
    text(generation, 100, 20);
    text("Population Fitness #: ", 10, 40);
-   text(popFit, 130, 40);
-   text("Cycles Left #: ", 10, 60);
+   text(popFit, 150, 40);
+   text("Life Left #: ", 10, 60);
    text(lifetime - lifeCounter, 100, 60);
    text("Population Size #: ", 10, 80);
    text(popSize, 120, 80);
@@ -340,8 +369,8 @@ class Population
    text("Generation #: ", width - 180, 20);
    text(generation, width - 95, 20);
    text("Population Fitness #: ", width - 180, 40);
-   text(popFit, width - 55, 40);
-   text("Cycles Left #: ", width - 180, 60);
+   text(popFit, width - 45, 40);
+   text("Life Left #: ", width - 180, 60);
    text(lifetime - lifeCounter, width - 95, 60);
    text("Population Size #: ", width - 180, 80);
    text(popSize, width - 65, 80);
@@ -418,12 +447,12 @@ class Rocket {
     if (d < tar.radius/2) {
       hit = true;
     }
-    return;
+
   }
 
- void hitCheck(fluid[] fo)
+ void hitCheck()
  {
-   for (fluid f : fo)
+   for (fluid f : obs)
    {
      float d = dist(location.x, location.y, f.loc.x, f.loc.y);
     if (d < f.radius/2) {
@@ -431,7 +460,7 @@ class Rocket {
     }
 
    }
-   return;
+
  }
 
    void checkEdges()
@@ -501,8 +530,13 @@ class Rocket {
   {
     float dist = PVector.dist(location,tar.loc);
     fitness = pow(1/dist,2);
-    fitness = map(fitness, 0, 1, 0, 1000);
+    fitness = map(fitness, 0, 1, 0, 5);
     if(hit) fitness += 1000;
+    if ( location.y > height/2 ){
+      fitness -= pow(1/dist,2);
+    }
+    else if(fhit) fitness -= pow(1/dist,2);
+
   }
   /*
   void fitness(Target tar)
@@ -545,36 +579,6 @@ Target(PVector w)
     text("Click/Tap to move",loc.x-50,loc.y-30);
     ellipse(loc.x,loc.y,radius,radius);
     text("Target",loc.x-20,loc.y+50);
-  }
-
-}
-
-class fluid
-{
-   PVector loc;
- float radius;
- float c;
-
- fluid(PVector w)
- {
-   loc = w;
-   radius = random(100,200);
- }
-
-  void display()
-  {
-    fill(74, 247, 17,30);
-    ellipse(loc.x,loc.y,radius,radius);
-    text("obstacle", loc.x, loc.y);
-  }
-
-  boolean collsionCheck(Target l2)
-  {
-    float d = dist(l2.loc.x, l2.loc.y, loc.x, loc.y);
-     if (d < l2.radius) {
-      return true;
-    }
-    return false;
   }
 
 }
