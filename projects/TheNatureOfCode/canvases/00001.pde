@@ -227,7 +227,7 @@ class Population
    maxFit = 0;
    for ( Rocket r : population)
    {
-     r.fitness(target);
+     r.fitnessb(target);
      total += r.fitness;
      if (r.fitness > maxFit) maxFit = r.fitness;
    }
@@ -497,7 +497,7 @@ class Rocket {
     popMatrix();
   }
 
-   void fitness(Target tar)
+   void fitnessb(Target tar)
   {
     float dist = PVector.dist(location,tar.loc);
     fitness = pow(1/dist,2);
