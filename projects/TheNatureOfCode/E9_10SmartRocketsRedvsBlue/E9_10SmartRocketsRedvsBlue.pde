@@ -10,10 +10,10 @@ void setup()
 {
   size(780,900);
   lifeCounter = 0;
-  target = new Target(new PVector(width/2,random(0,height)), 50);
+  target = new Target(new PVector(width/2,50), 50);
   //lifetime = 300;
-  saber = new Population(10, target,0);
-  saber2 = new Population(10, target,1);
+  saber = new Population(15, target,0);
+  saber2 = new Population(15, target,1);
   //f = new fluid(width/2,height/2, 50,50,0.1);
   obs = new fluid[8];
  
@@ -23,28 +23,25 @@ void setup()
  {
    if (i % 4 == 0)
    {
-     check = new PVector(random(0,width),height/2);
+     check = new PVector(random(width/2,width),height/2);
    }
    else if (i % 4 == 1)
    {
-     check = new PVector(random(0,width/2 - 250),height/2);
+     check = new PVector(random(0,width/2),height/2);
    }
    else if (i % 4 == 2){
 
-     check = new PVector(random(0,width/2 - 250),height/2);
+     check = new PVector(random(0,width/2),height/2);
    }
    else
    {
-     check = new PVector(random(width/2 + 200,width),height/2);
+     check = new PVector(random(width/2,width),height/2);
    }
    obs[i] = new fluid(check);
 }
 
 }
    
-  
-
-
 void draw()
 {
   
@@ -74,26 +71,26 @@ void draw()
       }
       if (key == 'V' || key =='v'){
         PVector check;
-    for(int i = 0; i < obs.length; i++)
- {
-   if (i % 4 == 0)
-   {
-     check = new PVector(random(0,width),random(height/2 - 200,0));
-   }
-   else if (i % 4 == 1)
-   {
-     check = new PVector(random(0,width/2 - 200),random(0,height));
-   }
-   else if (i % 4 == 2)
-   {
-     check = new PVector(random(0,width),random(height/2 + 200,height));
-   }
-   else
-   {
-     check = new PVector(random(width/2 + 200,width),random(0,height));
-   }
-   obs[i] = new fluid(check);
-}
+            for(int i = 0; i < obs.length; i++)
+             {
+               if (i % 4 == 0)
+               {
+                 check = new PVector(random(width/2,width),height/2);
+               }
+               else if (i % 4 == 1)
+               {
+                 check = new PVector(random(0,width/2),height/2);
+               }
+               else if (i % 4 == 2){
+            
+                 check = new PVector(random(0,width/2),height/2);
+               }
+               else
+               {
+                 check = new PVector(random(width/2,width),height/2);
+               }
+               obs[i] = new fluid(check);
+            }  
       }
     }
   
@@ -110,12 +107,12 @@ void draw()
  else {
   lifeCounter = 0;
   saber.fitness();
-  saber.selection();
+  saber.monteSelect();
   saber.reproduce();
   
   lifeCounter = 0;
   saber2.fitness();
-  saber2.selection();
+  saber2.monteSelect();
   saber2.reproduce();
  }
   stroke(0);
@@ -126,6 +123,8 @@ void draw()
    text("Mutation Rate: Q increase/W decrease", width - 250, height -50);
    fill(0);
    text("R to reset mutation rates",(width/2)-75,height -50);
+   fill(0);
+   text("V to shuffle obstacles",(width/2)-60,height - 75);
 }
 
 void mousePressed() {

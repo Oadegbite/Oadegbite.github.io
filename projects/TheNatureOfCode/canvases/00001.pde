@@ -94,10 +94,11 @@ void draw()
       }
     }
 
-  for (fluid f : obs)
-  {
-  f.display();
+    for(int i = 0; i < obs.length; i++)
+   {
+     obs[i].display();
   }
+
  if (lifeCounter < lifetime)
  {
    saber.run(obs);

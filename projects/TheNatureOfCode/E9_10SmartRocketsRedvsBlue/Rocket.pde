@@ -142,6 +142,14 @@ class Rocket {
     popMatrix();
   }
   
+   void fitness(Target tar)
+  {
+    float dist = PVector.dist(location,tar.loc);
+    fitness = pow(1/dist,2);
+    fitness = map(fitness, 0, 1, 0, 1000);
+    if(hit) fitness += 1000;
+  }
+  /*
   void fitness(Target tar)
   {
     println("start");
@@ -149,13 +157,13 @@ class Rocket {
     println("dist:" + dist);
     fitness = pow(1/dist,2);
     if(hit) fitness = 1;
-    if(fhit) fitness -= 1;
+   // if(fhit) fitness -= 1;
     println("hit:" + hit);
     println("fhit:" + fhit);
      System.out.println("B map "+fitness);
-    fitness = map(fitness, -1, 1, 0, 1);
+    fitness = map(fitness, 0, 1, 0, 1);
     System.out.println("A map "+fitness);
   }
-  
+  */
   
 }
