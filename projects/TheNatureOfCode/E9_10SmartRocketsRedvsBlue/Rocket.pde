@@ -9,7 +9,7 @@ class Rocket {
   float r = 3;
   int geneCount = 0;
   boolean hit;
-  
+  boolean fhit;
   //[end]
 
   Rocket(PVector origin)
@@ -37,9 +37,10 @@ class Rocket {
   }
   
   void run(){
-   if (!hit)
+   if (!hit && !fhit)
    {
      applyForce( dna.genes[lifeCounter] );
+     checkEdges();
      update();
    }
     
@@ -47,9 +48,10 @@ class Rocket {
   }
   
    void runB(){
-   if (!hit)
+   if (!hit && !fhit)
    {
      applyForce( dna.genes[lifeCounter] );
+     checkEdges();
      update();
    }
    displayB();
@@ -60,7 +62,40 @@ class Rocket {
      float d = dist(location.x, location.y, tar.loc.x, tar.loc.y);
     if (d < tar.radius/2) {
       hit = true;
-    } 
+    }
+    return;
+  }
+  
+ void hitCheck(fluid[] fo)
+ {
+   for (fluid f : fo)
+   {
+     float d = dist(location.x, location.y, f.loc.x, f.loc.y);
+    if (d < f.radius/2) {
+      fhit = true;
+    }
+    
+   }
+   return;
+ }
+  
+   void checkEdges()
+  {
+    if (location.x > width){
+      location.x = 0;
+    }
+    if (location.x < 0){
+      location.x = width;
+    }
+    /*
+    if ( location.y > height){
+      location.y = 0;
+    }
+    if (location.y < 0)
+    {
+      location.y = height;
+    }
+    */
   }
   
   void displayR()
@@ -71,6 +106,7 @@ class Rocket {
     pushMatrix();
     
     translate(location.x,location.y);
+    
     rotate(theta);
     
     beginShape(TRIANGLES);
@@ -108,10 +144,17 @@ class Rocket {
   
   void fitness(Target tar)
   {
+    println("start");
     float dist = PVector.dist(location,tar.loc);
+    println("dist:" + dist);
     fitness = pow(1/dist,2);
-    fitness = map(fitness, 0, 1, 0, 1000);
-    if(hit) fitness += 1000;
+    if(hit) fitness = 1;
+    if(fhit) fitness -= 1;
+    println("hit:" + hit);
+    println("fhit:" + fhit);
+     System.out.println("B map "+fitness);
+    fitness = map(fitness, -1, 1, 0, 1);
+    System.out.println("A map "+fitness);
   }
   
   

@@ -5,6 +5,7 @@ class Population
  ArrayList<Rocket> matingPool;
  PVector origin;
  float popFit;
+ float maxFit;
  int popSize;
  int generation;
  int popC; //for population color 0 = red, 1 = blue
@@ -13,7 +14,7 @@ class Population
  Population(int popSize_, Target tar, int popC_)
  {
    population = new Rocket[popSize_];
-   origin = new PVector(width/2,780);
+   origin = new PVector(width/2,850);
    matingPool = new ArrayList<Rocket>();
    target = tar;
    popC = popC_;
@@ -25,23 +26,26 @@ class Population
    popSize = popSize_;
  }
  
- void run()
+ void run(fluid[] fo)
  {
   for (Rocket r : population)
   {
     if ( popC == 0)   r.run();
     else r.runB();
     r.hitCheck(target);
+    r.hitCheck(fo);
   }
  }
  
  void fitness()
  {
    float total = 0;
+   maxFit = 0;
    for ( Rocket r : population)
    {
      r.fitness(target);
      total += r.fitness;
+     if (r.fitness > maxFit) maxFit = r.fitness;
    }
    popFit = total/population.length;
  }
@@ -49,6 +53,8 @@ class Population
  void monteSelect()
 {
    matingPool.clear();
+   fitness();
+   
   while (matingPool.size() < population.length)
   {
     
@@ -60,6 +66,7 @@ class Population
     float propb = m;
     
     float n = population[i].fitness * 100;
+    
     
    
     if ( n > propb)
@@ -74,15 +81,26 @@ class Population
 }
 
  
- void selection()
- {
-   matingPool.clear();
-   for ( int i = 0; i < population.length; i++)
-   {
-    
-   }
-   
- }
+  // Generate a mating pool
+  void selection() {
+    // Clear the ArrayList
+    matingPool.clear();
+
+    // Calculate total fitness of whole population
+    maxFit = 0;
+
+    // Calculate fitness for each member of the population (scaled to value between 0 and 1)
+    // Based on fitness, each member will get added to the mating pool a certain number of times
+    // A higher fitness = more entries to mating pool = more likely to be picked as a parent
+    // A lower fitness = fewer entries to mating pool = less likely to be picked as a parent
+    for (int i = 0; i < population.length; i++) {
+      float fitnessNormal = map(population[i].fitness,-1,maxFit,0,1);
+      int n = (int) (fitnessNormal * 100);  // Arbitrary multiplier
+      for (int j = 0; j < n; j++) {
+        matingPool.add(population[i]);
+      }
+    }
+  }
  
  void reproduce()
  {

@@ -1,18 +1,29 @@
-class fluid{
- float x,y,w,h; //x,y coordiantes width and height
- float c; //drag coefficient 
+class fluid
+{
+   PVector loc;
+ float radius;
+ float c;
  
- fluid(float x_, float y_, float w_, float h_, float c_){
-   x = x_;
-   y = y_;
-   w = w_;
-   h = h_;
-   c = c_;
+ fluid(PVector w)
+ {
+   loc = w;
+   radius = random(100,200);
  }
- 
- void display() {
-    noStroke();
-    fill(175);
-    ellipse(x,y,w,h);
+
+  void display()
+  {
+    fill(74, 247, 17,30);
+    ellipse(loc.x,loc.y,radius,radius);
+    text("obstacle", loc.x, loc.y);
   }
+ 
+  boolean collsionCheck(Target l2)
+  {
+    float d = dist(l2.loc.x, l2.loc.y, loc.x, loc.y);
+     if (d < l2.radius) {
+      return true;
+    } 
+    return false;
+  }
+  
 }

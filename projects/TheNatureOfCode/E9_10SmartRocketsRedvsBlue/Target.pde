@@ -9,6 +9,11 @@ class Target
    radius = r;
  }
 
+Target(PVector w)
+ {
+   loc = w;
+ }
+
   void display()
   {
     fill(0);
