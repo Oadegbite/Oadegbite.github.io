@@ -10,7 +10,12 @@ date: 2017-12-16
 
 <h2><u>The Idea:</u></h2>
 <p>To use a genetic algorith to solve a problem.</p>
-<p>Done though two populations of ships that can navigate to a target placed at multiple locations.</p>
+
+<p><h2>The Problem:</h2></p>
+<p>To navigate to a target with a radius of 50 pixels at an unknown location on a 780x900 pixel plane, this problem has a wide search space with many possible locations for the target and a narrow set of solutions. The fitness of solutions can be judged easily, fitness being closeness to the target and the best solutions hitting the target.</p>
+
+<p><h2>The Solution:</h2></p>
+<p>Two populations of ships that navigate based on DNA consisting of directions that are followed over time, the ships in each population with the highest fitness have their directions passed on at a higher rate in their population.</p>
 
 <p><h2>The variables:</h2></p>
 <p><em><strong>Generation:</strong></em> Number of generations since start of scene, where the next generation is made up of ships whose parents were the ships in the previous generation with the highest fitness.</p>
