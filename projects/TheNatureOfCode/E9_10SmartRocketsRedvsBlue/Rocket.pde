@@ -114,7 +114,7 @@ class Rocket {
     
   }
   
-   void fitness(Target tar)
+   void fitnessR(Target tar)
   {
     float dist = PVector.dist(location,tar.loc);
     fitness = pow(1/dist,2);

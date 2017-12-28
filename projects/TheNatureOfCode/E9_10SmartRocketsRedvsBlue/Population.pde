@@ -42,7 +42,7 @@ class Population
    maxFit = 0;
    for ( Rocket r : population)
    {
-     r.fitness(target);
+     r.fitnessR(target);
      total += r.fitness;
      if (r.fitness > maxFit) maxFit = r.fitness;
    }
