@@ -17,9 +17,9 @@ Target(PVector w)
   void display()
   {
     fill(0);
-    text("Click/Tap to move",loc.x-50,loc.y-30);
+    text("Click/Tap to move",loc.x-50,loc.y+60);
     ellipse(loc.x,loc.y,radius,radius);
-    text("Target",loc.x-20,loc.y+50);
+    text("Target",loc.x-20,loc.y+40);
   }
   
 }

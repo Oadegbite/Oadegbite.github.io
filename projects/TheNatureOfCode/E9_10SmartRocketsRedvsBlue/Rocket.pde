@@ -36,26 +36,16 @@ class Rocket {
     acceleration.mult(0);
   }
   
-  void run(){
+  void run(int popC){
    if (!hit && !fhit)
    {
      applyForce( dna.genes[lifeCounter] );
      checkEdges();
      update();
-   }
-    
-   displayR();
+   }    
+   display(popC);
   }
   
-   void runB(){
-   if (!hit && !fhit)
-   {
-     applyForce( dna.genes[lifeCounter] );
-     checkEdges();
-     update();
-   }
-   displayB();
-  }
   
   void hitCheck(Target tar)
   {
@@ -98,10 +88,11 @@ class Rocket {
     */
   }
   
-  void displayR()
+  void display(int popC)
   {
     float theta = velocity.heading() + PI/2;
-    fill(255,0,0);
+    if (popC == 0) fill(255,0,0);
+    else fill(0,67,255);
     stroke(0);
     pushMatrix();
     
@@ -121,25 +112,6 @@ class Rocket {
   void drag(fluid f)
   {
     
-  }
-  
-  void displayB()
-  {
-    float theta = velocity.heading() + PI/2;
-    fill(0,67,255);
-    stroke(0);
-    pushMatrix();
-    
-    translate(location.x,location.y);
-    rotate(theta);
-    
-    beginShape(TRIANGLES);
-    vertex(0,-r*2);
-    vertex(-r,r*2);
-    vertex(r,r*2);
-    endShape();
-    
-    popMatrix();
   }
   
    void fitness(Target tar)

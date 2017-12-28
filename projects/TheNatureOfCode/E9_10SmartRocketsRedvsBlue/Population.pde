@@ -30,8 +30,7 @@ class Population
  {
   for (Rocket r : population)
   {
-    if ( popC == 0)   r.run();
-    else r.runB();
+    r.run(popC);
     r.hitCheck(target);
     r.hitCheck();
   }
@@ -133,37 +132,42 @@ class Population
  
  void display()
  {
+   int yCoord = 20;
    if(popC == 0)
  {
    stroke(0);
    fill(255,0,0);
-   text("Generation #: ", 10, 20);
-   text(generation, 100, 20);
-   text("Population Fitness #: ", 10, 40);
-   text(popFit, 150, 40);
-   text("Life Left #: ", 10, 60);
-   text(lifetime - lifeCounter, 100, 60);
-   text("Population Size #: ", 10, 80);
-   text(popSize, 120, 80);
-   text("Mutuation Rate #: ", 10, 100);
-   text(mutuationRate, 120, 100);
+   //text("Generation #: ", 10, yCoord + 80); code for indiviudal generation display
+   //text(generation, 100, yCoord + 80); code for indiviudal generation display
+   text("Population Fitness #: ", 10, yCoord);
+   text(popFit, 150, yCoord);
+   text("Life Left #: ", 10, yCoord + 20);
+   text(lifetime - lifeCounter, 100, yCoord + 20);
+   text("Population Size #: ", 10, yCoord + 40);
+   text(popSize, 120, yCoord + 40);
+   text("Mutuation Rate #: ", 10, yCoord + 60);
+   text(mutuationRate, 120, yCoord + 60);
  }
- 
  else
  {
    stroke(0);
    fill(0,67,255);
-   text("Generation #: ", width - 180, 20);
-   text(generation, width - 95, 20);
-   text("Population Fitness #: ", width - 180, 40);
-   text(popFit, width - 45, 40);
-   text("Life Left #: ", width - 180, 60);
-   text(lifetime - lifeCounter, width - 95, 60);
-   text("Population Size #: ", width - 180, 80);
-   text(popSize, width - 65, 80);
-   text("Mutuation Rate #: ", width - 180, 100);
-   text(mutuationRate, width - 70, 100);
+   //text("Generation #: ", width-180, yCoord + 80); code for indiviudal generation display
+   //text(generation, width - 95, yCoord + 80); code for indiviudal generation display
+   text("Population Fitness #: ", width - 180, yCoord);
+   text(popFit, width - 55, yCoord);
+   text("Life Left #: ", width - 180, yCoord + 20);
+   text(lifetime - lifeCounter, width - 95, yCoord + 20);
+   text("Population Size #: ", width - 180, yCoord + 40);
+   text(popSize, width - 65, yCoord + 40);
+   text("Mutuation Rate #: ", width - 180, yCoord + 60);
+   text(mutuationRate, width - 70, yCoord + 60);   
  }
+ 
+   stroke(0);
+   fill(0);
+   text("Generation #: ", width/2 - 65, 20);
+   text(generation, width/2 + 25 , 20);
  
  }
  
