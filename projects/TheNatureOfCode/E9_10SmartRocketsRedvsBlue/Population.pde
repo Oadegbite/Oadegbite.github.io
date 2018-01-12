@@ -58,21 +58,18 @@ class Population
   {
     
     for (int i = 0; i < population.length; i++) {
-
    
     float m = random(1) * 100;
     
     float propb = m;
     
     float n = population[i].fitness * 100;
-    
-    
-   
+       
     if ( n > propb)
-    {
-      matingPool.add(population[i]);
-     
-    }
+      {
+        matingPool.add(population[i]);
+       
+      }
     
     }
     
