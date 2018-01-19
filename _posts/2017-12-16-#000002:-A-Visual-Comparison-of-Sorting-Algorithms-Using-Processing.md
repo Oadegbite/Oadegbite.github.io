@@ -19,7 +19,7 @@ date: 2018-01-15
 <p><em><strong>Heap Sort:</strong></em> </p>
 <p><em><strong>Quick Sort:</strong></em></p>
 <p><em><strong>Insertion Sort:</strong></em></p>
-<canvas data-processing-sources="/projects/canvases/00002MergeSort.pde"></canvas>
+<canvas data-processing-sources="/projects/canvases/00002InsertionSort.pde"></canvas>
 <h2><u>The Implementation:</u></h2>
 
 
