@@ -4,9 +4,6 @@ title: "#00002: A Visual Comparison of Sorting Algorithms Using Processing "
 date: 2018-01-15
 ---
 
-
-<canvas data-processing-sources="/projects/canvases/00002MergeSort.pde"></canvas>
-
 <h2><u>The Idea:</u></h2>
 
 <p>To get a better understanding of sorting algorithms and their relative speeds and sorting methods through visual comparison.</p>
