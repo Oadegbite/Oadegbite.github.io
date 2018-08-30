@@ -1,12 +1,75 @@
 ---
-layout: default
 title: Oadegbite
 ---
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+</head>
+
+<div id="particles-js">
+  <nav>
+      <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/projects">Projects</a></li>
+      </ul>
+  </nav>
 
 		<div class="blurb">
-      <h1>Tomi Adegbite</h1>
-      <p>A Computer Science Journal</p>
-			{% for post in site.posts %}
-			 <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-		 {% endfor %}
+      <h1 style="color:white;">Tomi Adegbite</h1>
+      <p style="color:white;">A Computer Science Journal</p>
+
+</div>
+      <!-- particles.js container -->
+      <script src="/libraries/p.js/particles.js"></script>
+      <script src="/libraries/p.js/js/app.js"></script>
+      <script src="/libraries/p.js/js/lib/stats.js"></script>
 		</div>
+
+    <style>
+    html,body{
+    	width:100%;
+    	height:100%;
+    	background:#111;
+    }
+    nav ul, footer ul {
+        font-family:'Helvetica', 'Arial', 'Sans-Serif';
+        padding: 0px;
+        list-style: none;
+        font-weight: bold;
+    }
+    nav ul li, footer ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+    a {
+        text-decoration: none;
+        color: #999;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    h1 {
+        font-size: 3em;
+        font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    }
+    p {
+        font-size: 1.5em;
+        line-height: 1.4em;
+        color: #333;
+    }
+    footer {
+        border-top: 1px solid #d5d5d5;
+        font-size: .8em;
+    }
+
+    ul.posts {
+        margin: 20px auto 40px;
+        font-size: 1.5em;
+    }
+
+    ul.posts li {
+        list-style: none;
+    }
+    </style>

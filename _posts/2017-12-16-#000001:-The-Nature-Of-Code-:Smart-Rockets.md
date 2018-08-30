@@ -3,7 +3,9 @@ layout: post
 title: "#00001: The Nature Of Code: Smart Rockets"
 date: 2017-12-16
 ---
-
+<head>
+  <script language="javascript" type="text/javascript" src="/libraries/processing.js"></script>
+</head>
 <canvas data-processing-sources="/projects/canvases/00001.pde"></canvas>
 <p> Two populations of evolving smart rockets made with the help of <a href="http://natureofcode.com/book/chapter-9-the-evolution-of-code/">Chapter 9</a> of the amazing <a href="http://natureofcode.com/book/">Nature Of Code Book</a>.</p>
 <p>Code on <a href="https://github.com/Oadegbite/Oadegbite.github.io/tree/master/projects/TheNatureOfCode/E9_10SmartRocketsRedvsBlue">Github</a></p>
