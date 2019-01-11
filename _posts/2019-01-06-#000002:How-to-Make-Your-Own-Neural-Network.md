@@ -11918,62 +11918,67 @@ This will be a notebook for me to explore all the workings on a basic neural net
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><center>Class NerualNetwork __init__</center></h1><p><br></p>
 <h2><center>self.inodes</center></h2><p>self.inodes is a <a href="http://chortle.ccsu.edu/vectorlessons/vch01/vch01_6.html">Column Matrix</a> of inputNodes x 1.</p>
-<p>$$</p>
-<h1 id="\mathbf{self.indoes}">\mathbf{self.indoes}<a class="anchor-link" href="#\mathbf{self.indoes}">&#182;</a></h1><p>\begin{bmatrix}
+<p>\begin{equation*}
+\mathbf{self.indoes}=
+\begin{bmatrix}
 {inputNode_1}
 \\ \vdots &amp; \\
 {inputNode_n}
 \end{bmatrix}
-$$</p>
+\end{equation*}</p>
 <p><br>
 <br>
 <br></p>
 <h2><center>self.hnodes</center></h2><p>self.hnodes is a <a href="http://chortle.ccsu.edu/vectorlessons/vch01/vch01_6.html">Column Matrix</a> of hiddenNodes x 1.</p>
-<p>$$</p>
-<h1 id="\mathbf{self.hnodes}">\mathbf{self.hnodes}<a class="anchor-link" href="#\mathbf{self.hnodes}">&#182;</a></h1><p>\begin{bmatrix}
+<p>\begin{equation*}
+\mathbf{self.hnodes}=
+\begin{bmatrix}
 {hiddenNodes_1}
 \\ \vdots &amp; \\
 {hiddenNodes_n}
 \end{bmatrix}
-$$</p>
+\end{equation*}</p>
 <p><br>
 <br>
 <br></p>
 <h2><center>self.onodes</center></h2><p>self.onodes is a <a href="http://chortle.ccsu.edu/vectorlessons/vch01/vch01_6.html">Column Matrix</a> of outputNodes x 1.</p>
-<p>$$</p>
-<h1 id="\mathbf{self.onodes}">\mathbf{self.onodes}<a class="anchor-link" href="#\mathbf{self.onodes}">&#182;</a></h1><p>\begin{bmatrix}
+<p>\begin{equation*}
+\mathbf{self.onodes}=
+\begin{bmatrix}
 {outputNodes_1}
 \\ \vdots &amp; \\
 {outputNodes_n}
 \end{bmatrix}
-$$</p>
+\end{equation*}</p>
 <p><br>
 <br>
 <br></p>
 <h2><center>self.whi</center></h2><p>self.whi is a matrix of weights from each InputNode to HiddenNode which represent a set of connection in the network of hiddenNodes(H) x InputNodes(I), H rows, I col.</p>
-<p>$$</p>
-<h1 id="\mathbf{self.whi}">\mathbf{self.whi}<a class="anchor-link" href="#\mathbf{self.whi}">&#182;</a></h1><p>\begin{bmatrix}
+<p>\begin{equation*}
+\mathbf{self.whi}=
+\begin{bmatrix}
 {Weight_{11}}  &amp; \cdots &amp; {Weight_{1I}}
 \\ \vdots &amp; \ddots &amp; \vdots \\
 {Weight_{H1}} &amp; \cdots &amp; {Weight_{HI}}
 \end{bmatrix}
-$$
-&lt;br&gt;
-&lt;br&gt;
+\end{equation*}
+<br>
+<br>
 ${Weight_{11}}$  for example would represent the connection between InputNodes 1 and HiddenNode 1</p>
 <p><br>
 <br>
 <br></p>
 <h2><center>self.ohw</center></h2><p>self.ohw is a matrix of weights from each Hidden Node to output node which represent a set of connection in the network of size outputNodes(O) x hiddenNodes(H), O rows, H col</p>
-<p>$$</p>
-<h1 id="\mathbf{self.ohw}">\mathbf{self.ohw}<a class="anchor-link" href="#\mathbf{self.ohw}">&#182;</a></h1><p>\begin{bmatrix}
+<p>\begin{equation*}
+\mathbf{self.ohw}=
+\begin{bmatrix}
 {Weight_{11}}  &amp; \cdots &amp; {Weight_{1H}}
 \\ \vdots &amp; \ddots &amp; \vdots \\
 {Weight_{O1}} &amp; \cdots &amp; {Weight_{OH}}
 \end{bmatrix}
-$$
-&lt;br&gt;
-&lt;br&gt;
+\end{equation*}
+<br>
+<br>
 ${Weight_{11}}$ for example would represent the connection between HiddenNode 1 and OutputNode 1</p>
 <h2><center>self.activation_function </center></h2><p>The <a href="https://en.wikipedia.org/wiki/Activation_function">Activation Function</a> is a function that determains the output of a node based on its input in this case the <a href="https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.special.expit.html">scipy.special.expit(x)</a> which is a version of the <a href="https://en.wikipedia.org/wiki/Logistic_function">logistic function</a>
 \begin{equation*}
@@ -12252,11 +12257,12 @@ Input to Hidden Connection Matrix:
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><center>Image matrix</center></h1><p>\begin{equation*}
-\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
-\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\
-\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial u} &amp; 0 \\
-\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial v} &amp; 0
-\end{vmatrix}
+\mathbf{imageMatrix}=
+\begin{bmatrix}
+{Weight_{1-1}}  &amp; \cdots &amp; {Weight_{1-{28}}}
+\\ \vdots &amp; \ddots &amp; \vdots \\
+{Weight_{28-1}} &amp; \cdots &amp; {Weight_{28-28}}
+\end{bmatrix}
 \end{equation*}</p>
 
 </div>
